@@ -43,7 +43,7 @@ public class LockTest {
 	public void testUnlockedStaysUnlocked() {
 		ILock lock = Factory.getLock(new int[] { 1, 2, 3 });
 		lock.unlock(new int[] { 3, 2, 1 });
-		assertTrue(lock.isLocked());
+		assertFalse(lock.isLocked());
 	}
 
 

@@ -1,6 +1,7 @@
 package combolock;
 
 import javax.swing.JPanel;
+import java.awt.*;
 
 public class Factory {
 
@@ -10,7 +11,10 @@ public class Factory {
 	 * @return
 	 */
 	public static ILock getLock(int[] combo) {
-		return null;
+
+        ILock lock = new LockModel(combo);
+
+        return lock;
 	}
 	
 	/**
@@ -19,7 +23,9 @@ public class Factory {
 	 * @return
 	 */
 	public static IView getView1(ILock model) {
-		return null;
+        IView viewOne = new View1(model);
+
+        return viewOne;
 	}
 	
 	/**
@@ -28,14 +34,42 @@ public class Factory {
 	 * @return
 	 */
 	public static IView getView2(ILock model) {
-		return null;
+        IView viewTwo = new View2(model);
+
+        return viewTwo;
 	}
+
+
+    /**
+     * Get last of the views of the lock model.
+     * @param model
+     * @return
+     */
+    public static IView getView3(ILock model) {
+        IView viewThree = new View3(model);
+
+        return viewThree;
+    }
+
+    /**
+     * Get last of the views of the lock model.
+     * @param model
+     * @return
+     */
+    public static IView getView4(ILock model) {
+        IView viewFour = new View4(model);
+
+        return viewFour;
+    }
 	
 	
 	/**
 	 * Get the graphical user interface
 	 */
 	public static JPanel getLockGUI(ILock model) {
-		return new JPanel();
+
+        BorderLayout layout = new BorderLayout();
+
+        return new JPanel(layout);
 	}
 }

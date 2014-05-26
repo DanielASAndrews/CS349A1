@@ -3,8 +3,6 @@ package combolock;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,11 +17,8 @@ public class View1 extends JPanel implements IView {
     private ILock model;
 
     // the view's main user interface
-    //private ArrayList<JSpinner> spinners = new ArrayList<JSpinner>();
 
     private Map<Integer, JSpinner> spinners = new HashMap<Integer, JSpinner>();
-    //private JButton enter = new JButton("Enter");
-    //private JButton reLock = new JButton("Re-lock");
 
     public View1(ILock lockModel){
         super();
@@ -34,6 +29,7 @@ public class View1 extends JPanel implements IView {
         // create the view UI
         this.layoutView();
 
+        // add the controllers to the view
         this.registerControllers();
     }
 
@@ -41,28 +37,11 @@ public class View1 extends JPanel implements IView {
 
         JPanel east = new LabelsLayout();
         JPanel west = new SpinnersLayout();
-       // JPanel south = new ButtonsLayout();
         this.setLayout(new BorderLayout(5,5));
 
         this.add(east, BorderLayout.WEST);
         this.add(west, BorderLayout.EAST);
-        //this.add(south, BorderLayout.SOUTH);
     }
-
-    /*
-    class ButtonsLayout extends JPanel {
-        public ButtonsLayout(){
-            super();
-
-            this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-
-            this.add(enter);
-            this.add(Box.createRigidArea(new Dimension(5, 0)));
-            this.add(reLock);
-        }
-    }
-
-    */
 
     class LabelsLayout extends JPanel {
 
@@ -74,8 +53,6 @@ public class View1 extends JPanel implements IView {
             JLabel third = new JLabel("Third Digit ");
             JLabel fourth = new JLabel("Fourth Digit ");
             JLabel fifth = new JLabel("Fifth Digit ");
-
-
 
             ArrayList<JLabel> labels = new ArrayList<JLabel>();
 
@@ -91,10 +68,8 @@ public class View1 extends JPanel implements IView {
                 this.add(labels.get(i));
                 this.add(Box.createRigidArea(new Dimension(0, 28)));
             }
-
         }
     }
-
 
     class SpinnersLayout extends JPanel {
 
@@ -109,24 +84,20 @@ public class View1 extends JPanel implements IView {
                 JSpinner newSpinner = (new JSpinner(new SpinnerNumberModel(1, 1,
                         99, 1)));
 
-                // Make spinner non-editable
-                //newSpinner.setEditor(new JSpinner.DefaultEditor(newSpinner));
-
-                // Prevent Spinners from resizing
+                // Prevent spinners from resizing
                 Dimension d = newSpinner.getPreferredSize();
                 d.height = 20;
-              //  d.width = 40;
 
                 spinners.put(i, newSpinner);
                 this.add(newSpinner);
 
+                //Align the spinners
                 newSpinner.setMaximumSize(d);
                 Dimension minSize = new Dimension(5, 23);
                 Dimension prefSize = new Dimension(5, 23);
-                Dimension maxSize = new Dimension(Short.MAX_VALUE, 23);
+                Dimension maxSize = new Dimension(5, 23);
                 this.add(new Box.Filler(minSize, prefSize, maxSize));
             }
-
         }
     }
 
@@ -151,28 +122,6 @@ public class View1 extends JPanel implements IView {
         for (int i=0; i < model.comboLength(); i++){
             this.spinners.get(i).addChangeListener(sc);
         }
-
-
-     /*
-        //For checking the entered combination
-        this.enter.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                model.unlock(((LockModel) model).getEnteredCombo());
-            }
-        });
-
-        */
-
-
-    /*
-        //For re-locking the lock
-        this.reLock.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                model.lock();
-                ((LockModel)model).resetEnteredCombo();
-            }
-        });
-        */
     }
 
     // IView interface

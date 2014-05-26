@@ -24,7 +24,7 @@ public class Main {
         IView viewThree = Factory.getView3(lock);
         IView viewFour = Factory.getView4(lock);
 
-        // tell Model about View.
+        // tell Model about Views.
         lock.addView(viewOne);
         lock.addView(viewTwo);
         lock.addView(viewThree);
@@ -36,15 +36,17 @@ public class Main {
         JFrame f = new JFrame("Combo Lock");
 		f.setContentPane(gui);
 
+        // Use border layout for the Views
         f.getContentPane().add(new JPanel(), BorderLayout.EAST);
         f.getContentPane().add((View1) viewOne, BorderLayout.WEST);
         f.getContentPane().add((View2)viewTwo, BorderLayout.CENTER);
         f.getContentPane().add((View3)viewThree, BorderLayout.SOUTH);
         f.getContentPane().add((View4) viewFour, BorderLayout.NORTH);
 
-        //f.setSize(600, 600);
+        //Set min-max window dimensions
         f.setMinimumSize(new Dimension(355, 290));
         f.setMaximumSize(new Dimension(400, 300));
+
         f.pack();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);

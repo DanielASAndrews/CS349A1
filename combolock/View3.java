@@ -1,7 +1,6 @@
 package combolock;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -49,7 +48,6 @@ public class View3 extends JPanel implements IView{
         else {
             this.configureLock.setText("Lock");
         }
-
     }
 
 }

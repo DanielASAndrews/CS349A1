@@ -6,7 +6,7 @@ Stuff the TA should know about your assignment.  In particular,
 how you solved the problem of keeping the views in sync with
 each other.
 
-Input: Through the commandline 1-5 numbers
+Input: As commandline arguments with a range of 1-5 numbers, with each number being from 1-99.
 
 To keep the views in sync with each other, every time there was a change to the LockModel class (implements ILock)
 the method updateAllViews() which kept the views appropriately updated.

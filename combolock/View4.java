@@ -32,6 +32,7 @@ public class View4 extends JPanel implements IView{
     public void updateView() {
 
         if (this.model.isLocked()){
+            lockState.setText("Locked");
             lockState.setForeground (Color.white);
             lockState.setBackground(Color.red);
         }
@@ -40,7 +41,6 @@ public class View4 extends JPanel implements IView{
             lockState.setForeground (Color.white);
             lockState.setBackground(Color.green);
         }
-
     }
 
 }

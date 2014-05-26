@@ -1,5 +1,7 @@
 package combolock;
 
+//Nothing is imported from the Views
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -7,11 +9,12 @@ import java.util.Arrays;
  * Created by cs349 on 21/05/14.
  */
 public class LockModel implements ILock {
-    // the data for this model
 
+    // the data for this model
     private int[] lockCombination;
     private int[] enteredCombo;
     private Boolean lockState;
+
     // all views of this model
     private ArrayList<IView> views = new ArrayList<IView>();
 
@@ -24,8 +27,6 @@ public class LockModel implements ILock {
 
     @Override
     public void updateAllViews(){
-
-        System.out.println("Calling Update Views");
 
         for (IView view : views){
             view.updateView();
@@ -46,8 +47,6 @@ public class LockModel implements ILock {
     @Override
     public void unlock(int[] combo){
 
-        System.out.println("Now running unlock...");
-
         Boolean isDigitCorrect = true;
 
         for (int i=0; i < lockCombination.length; i++){
@@ -63,8 +62,6 @@ public class LockModel implements ILock {
         }
 
         updateAllViews();
-
-        System.out.println("Lock state is: " + lockState);
     }
 
     @Override
@@ -87,8 +84,6 @@ public class LockModel implements ILock {
     {
         enteredCombo[position] = value;
         updateAllViews();
-
-        System.out.println("New combo position of enteredCombo is: " + enteredCombo[position]);
     }
 
     public int getEnteredComboDigit(Integer position)

@@ -1,5 +1,3 @@
-
-UserID:	d2andrew
 Name:	Daniel Andrews
 
 Stuff the TA should know about your assignment.  In particular,
